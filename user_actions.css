@@ -1,0 +1,107 @@
+.action-list-container div.action-list {
+  display: none;
+  border-style: none;
+}
+.action-list-container {
+  position: relative;
+  border-style: dashed;
+  border-width: 1px;
+  border-color: transparent;
+}
+.action-list-container:after {
+  content: '';
+  clear: both;
+}
+.action-list-container:hover {
+  border-color: #CCC;
+}
+.action-list-container:hover div.action-list {
+  display: block;
+}
+li.full-action-hotspot {
+  cursor: pointer;
+  color: #CCC;
+}
+li.full-action-hotspot:hover {
+  color: #FFF;
+}
+li.full-action-hotspot:hover ul.all-actions {
+  display: block;
+  position: absolute;
+  top: 100%;
+  right: 0px;
+  padding-bottom: 6px;
+}
+.action-list-js ul.all-actions {
+  background-color: #000;
+  width: auto;
+  float: none;
+  margin: 0px;
+  padding: 0px;
+}
+.action-list-js ul.all-actions li a {
+  display: block;
+}
+.action-list-js ul.all-actions li {
+  text-align: right;
+  padding: 3px 6px;
+  float: none;
+  list-style: none;
+  background: none;
+  min-width: 100px;
+  position: relative;
+}
+div.action-list-js {
+  padding-right: 20px;
+}
+div.action-list {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-image: linear-gradient(bottom, rgb(10,10,10) 0%,  rgb(84,87,86) 100%);
+  background-image: -o-linear-gradient(bottom, rgb(10,10,10) 0%,  rgb(84,87,86) 100%);
+  background-image: -moz-linear-gradient(bottom, rgb(10,10,10) 0%,  rgb(84,87,86) 100%);
+  background-image: -webkit-linear-gradient(bottom, rgb(10,10,10) 0%, rgb(84,87,86) 100%);
+  background-image: -ms-linear-gradient(bottom, rgb(10,10,10) 0%, rgb(84,87,86) 100%);
+
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, rgb(10,10,10)),
+    color-stop(1, rgb(84,87,86))
+  );
+  color: #FFF;
+  padding: 6px;
+  border-radius: 6px;
+
+}
+div.action-list > ul {
+  margin: 0px;
+  padding: 0px;
+  float: left;
+  position: relative;
+}
+div.action-list > ul:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+div.action-list-js ul.all-actions {
+  display: none;
+}
+div.action-list > ul > li {
+  font-size: 13px;
+  float: left;
+  list-style: none;
+  background: none;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+div.action-list li a {
+  color: #FFF;
+  text-decoration: none;
+}
+div.action-list li a:hover {
+  text-decoration: underline;
+}

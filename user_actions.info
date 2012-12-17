@@ -1,0 +1,4 @@
+name = User Actions
+description = "Adds a customizable action list to most renderable entities"
+package = User Interface
+core = 7.x
