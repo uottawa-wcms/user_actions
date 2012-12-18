@@ -30,7 +30,8 @@ li.full-action-hotspot:hover ul.all-actions {
   position: absolute;
   top: 100%;
   right: 0px;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
+  border-radius: 0px 4px 4px 4px;
 }
 .action-list-js ul.all-actions {
   background-color: #000;
@@ -42,13 +43,16 @@ li.full-action-hotspot:hover ul.all-actions {
 .action-list-js ul.all-actions li a {
   display: block;
 }
+.action-list-js ul.all-actions li:first-child {
+  padding-top: 6px;
+}
 .action-list-js ul.all-actions li {
   text-align: right;
-  padding: 3px 6px;
+  padding: 0px 6px;
+  padding-top: 3px;
   float: none;
   list-style: none;
   background: none;
-  min-width: 100px;
   position: relative;
 }
 div.action-list-js {

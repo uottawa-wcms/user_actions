@@ -11,6 +11,16 @@ function user_actions_theme() {
   );
 }
 
+function user_actions_permission() {
+  return array(
+    'user_actions_access' => array(
+      'title' => t('Ability to view the user action menu'),
+      'description' => t('Users with this permission will be able to view the
+        user action menu where it is available.'),
+    ),
+  );
+}
+
 function user_actions_preprocess_node(&$vars) {
   if (node_access('update', $vars['node'])) {
     $vars['user_actions'][] = array(
@@ -27,21 +37,21 @@ function user_actions_preprocess_node(&$vars) {
   }
 }
 
-function user_actions_process_node(&$vars) {
-  user_actions_do_process($vars);
-}
-
-function user_actions_do_process(&$vars) {
-  if (count($vars['user_actions'])) {
-    if (is_array($vars['classes'])) {
-      $vars['classes'][] = 'action-list-container';
-    } elseif (empty($vars['classes'])) {
-      $vars['classes'] = 'action-list-container';
-    } else {
-      $vars['classes'] .= ' action-list-container';
+function user_actions_process(&$vars, $hook) {
+  if (user_access('user_actions_access')) {
+    if (!empty($vars['user_actions'])) {
+      if (count($vars['user_actions'])) {
+        if (is_array($vars['classes'])) {
+          $vars['classes'][] = 'action-list-container';
+        } elseif (empty($vars['classes'])) {
+          $vars['classes'] = 'action-list-container';
+        } else {
+          $vars['classes'] .= ' action-list-container';
+        }
+        $vars['user_action_bar'] = theme('user_actions', array(
+          'links' => $vars['user_actions']
+        ));
+      }
     }
-    $vars['user_action_bar'] = theme('user_actions', array(
-      'links' => $vars['user_actions']
-    ));
   }
 }

@@ -13,7 +13,7 @@ function theme_user_actions($vars) {
       $html .= ' class="primary-action"';
     }
     $html .= '>';
-    $html .= l($link['title'], $link['path'], $link['options']);
+    $html .= l(str_replace(' ', '&nbsp;', $link['title']), $link['path'], $link['options']);
     $html .= '</li>';
   }
   $html .= '</ul>';
