@@ -27,18 +27,21 @@ function user_actions_preprocess_node(&$vars) {
       'title' => t('Edit'),
       'path' => 'node/' . $vars['node']->nid . '/edit',
       'is_primary' => TRUE,
+      'weight' => -25,
     );
   }
   if (node_access('delete', $vars['node'])) {
     $vars['user_actions']['delete'] = array(
       'title' => t('Delete'),
       'path' => 'node/' . $vars['node']->nid . '/delete',
+      'weight' => 25,
     );
   }
   if (_node_revision_access($vars['node'])) {
     $vars['user_actions']['revise'] = array(
       'title' => t('Manage Revisions'),
-      'path' => 'node/' . $vars['node']->nid . '/reviisons',
+      'path' => 'node/' . $vars['node']->nid . '/revisions',
+      'weight' => 15,
     );
   }
 }
@@ -54,10 +57,15 @@ function user_actions_process(&$vars, $hook) {
         } else {
           $vars['classes'] .= ' action-list-container';
         }
+        usort($vars['user_actions'], '_user_actions_sort_by_weight');
         $vars['user_action_bar'] = theme('user_actions', array(
           'links' => $vars['user_actions']
         ));
       }
     }
   }
+}
+
+function _user_actions_sort_by_weight($a, $b) {
+  return $b['weight'] - $a['weight'];
 }
