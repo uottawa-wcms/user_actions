@@ -23,16 +23,22 @@ function user_actions_permission() {
 
 function user_actions_preprocess_node(&$vars) {
   if (node_access('update', $vars['node'])) {
-    $vars['user_actions'][] = array(
+    $vars['user_actions']['edit'] = array(
       'title' => t('Edit'),
       'path' => 'node/' . $vars['node']->nid . '/edit',
       'is_primary' => TRUE,
     );
   }
   if (node_access('delete', $vars['node'])) {
-    $vars['user_actions'][] = array(
+    $vars['user_actions']['delete'] = array(
       'title' => t('Delete'),
       'path' => 'node/' . $vars['node']->nid . '/delete',
+    );
+  }
+  if (_node_revision_access($vars['node'])) {
+    $vars['user_actions']['revise'] = array(
+      'title' => t('Manage Revisions'),
+      'path' => 'node/' . $vars['node']->nid . '/reviisons',
     );
   }
 }
