@@ -2,3 +2,9 @@ name = User Actions
 description = "Adds a customizable action list to most renderable entities"
 package = User Interface
 core = 7.x
+
+; Information added by drush on 2013-02-06
+version = "unknown"
+project = "user_actions"
+datestamp = "1360163294"
+
